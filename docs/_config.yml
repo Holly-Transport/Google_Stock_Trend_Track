@@ -1,6 +1,6 @@
 # Book settings
 title:
-author: World Bank Development Data Group
+author: Holly Krambeck
 logo: docs/images/logo.png
 
 repository:
@@ -13,6 +13,6 @@ html:
     use_edit_page_button: true
     use_repository_button: true
     use_issues_button: true
-    baseurl: https://worldbank.github.io/template
+    baseurl: https://holly-transport.github.io/Test-Repo-2
 
 only_build_toc_files: true
