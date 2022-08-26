@@ -5,8 +5,7 @@ parts:
   - caption: Examples
     numbered: True
     chapters:
-    - file: notebooks/world-bank-api.ipynb
-    - file: notebooks/world-bank-package.ipynb
+    - file: notebooks/pytrend_viz.ipynb
   - caption: Additional Resources
     chapters:
       - url: https://datapartnership.org
