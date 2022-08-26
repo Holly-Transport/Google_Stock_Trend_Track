@@ -8,4 +8,9 @@ dependencies:
   - pip
   - pip:
     - -e .
-    - requests==2.28.1
+    - requests==2.28.1     
+    - pytrends
+    - pytrends-support-hvk==0.0.1
+    - DateTime
+    - matplotlib
+    - seaborn
