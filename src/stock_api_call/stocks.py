@@ -4,19 +4,23 @@ from datetime import timedelta, datetime
 import pandas as pd
 import os
 
-#---Secret Stuff---#
-# Go to Polygon.io to set up API key #
-key = os.getenv('STOCK_API_KEY')
-API_KEY= key
-
-#---Parameters---#
-parameters = {
-    'apiKey':API_KEY,
-}
 
 class Stocks:
 
-    def __init__ (self, ticker, days):
+    def __init__ (self, ticker, days, api_key = None):
+        """
+        Constructs a wrapper object to retrieve data from Polygon.io
+
+        Parameters
+        ----------
+            ticker : str
+                Stock ticker
+            days : int
+                Days
+            api_key : str, optional
+                Polygon.io API key
+        """
+        self.API_KEY = api_key if api_key else os.getenv("STOCK_API_KEY")
         self.ticker = ticker
         self.days=days
 
@@ -30,8 +34,12 @@ class Stocks:
         self.start_date = (self.raw_today - timedelta(days=self.days)).strftime('%Y-%m-%d')
         return self.start_date
 
-    def stocks(self):
-        self.response = requests.get(f"https://api.polygon.io/v2/aggs/ticker/{self.ticker}/range/1/day/{self.start()}/{self.current()}", params = parameters)
+    def stocks(self, params:dict = {}):
+
+        # update requests with Polygon.io API key
+        params.update({"apiKey": self.API_KEY})
+
+        self.response = requests.get(f"https://api.polygon.io/v2/aggs/ticker/{self.ticker}/range/1/day/{self.start()}/{self.current()}", params = params)
         self.response.raise_for_status()
         self.data = self.response.json()
         self.closing_prices = []
@@ -58,7 +66,6 @@ class Stocks:
 # days = 10
 # stock = Stocks(ticker, days)
 # print (stock.stocks())
-
 
 
 
