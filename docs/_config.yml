@@ -13,6 +13,6 @@ html:
     use_edit_page_button: true
     use_repository_button: true
     use_issues_button: true
-    baseurl: https://holly-transport.github.io/Test-Repo-2
+    baseurl: https://holly-transport.github.io/Google_Stock_Trend_Track
 
 only_build_toc_files: true
